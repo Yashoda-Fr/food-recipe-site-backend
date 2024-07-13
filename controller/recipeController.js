@@ -1,7 +1,31 @@
 
 const recipeService = require('../services/recipeService');
 
+const CreateRecipe = async(req,res)=>{
+    try{
+        const{title,description,ingredients} =req.body;
 
+        //validate required field
+        if(!title || !description || !ingredients){
+            return res.status(400).json({message:'All fiels are mandotary.'})
+        }
+
+        //create a new recipe object
+        const newRecipe={
+            title,
+            description,
+            ingredients
+        };
+
+        await recipeService.addNewRecipe(newRecipe);
+
+        res.status(201).json({message:"inserted successfully."})
+
+    }catch(err){
+        res.status(500).json({ message: err.message });
+
+    }
+}
 
 const getAllRecipes = async (req, res) => {
 
@@ -24,5 +48,6 @@ const getAllRecipes = async (req, res) => {
 
 
 module.exports = {
-    getAllRecipes
+    getAllRecipes,
+    CreateRecipe
 }

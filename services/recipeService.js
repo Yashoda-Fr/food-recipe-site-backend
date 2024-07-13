@@ -1,6 +1,10 @@
 
 const model = require('../models/recipeModel')
 
+const addNewRecipe=async (newRecipe)=>{
+    await model.insertMany(newRecipe)
+    
+}
 
 
 const getAllRecipes = async ()=>{
@@ -9,8 +13,11 @@ const getAllRecipes = async ()=>{
 
 
 module.exports={
-    getAllRecipes
+    getAllRecipes,
+    addNewRecipe
 }
+
+
 
 
 
