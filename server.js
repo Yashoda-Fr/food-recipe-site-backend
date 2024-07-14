@@ -21,6 +21,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+//give acces for port 3000local host in cors
+app.use(cors({origin:'http://localhost:3000'}));
+
 
 
 
