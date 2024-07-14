@@ -2,6 +2,7 @@ const express=require('express');
 // body parser helps to parse the incoming request body
 const bodyParser=require('body-parser');
 const connctDB=require('./config/db');
+const cors = require('cors');
 
 const recipeRoutes = require('./routes/recipeRoutes.routes');
 
@@ -15,6 +16,10 @@ const app=express();
 connctDB();//run function in this file()
 //
 app.use(bodyParser.json());
+
+// Enable CORS
+app.use(cors());
+
 
 
 
